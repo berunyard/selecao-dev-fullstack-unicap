@@ -2,7 +2,7 @@
 
 Este é um MVP (Minimum Viable Product) para análise de sentimentos em textos em português, utilizando FastAPI no backend e React no frontend.
 
-## 📋 Visão Geral
+## Visão Geral
 
 ### Arquitetura
 
@@ -28,7 +28,7 @@ O sistema segue uma arquitetura moderna com separação clara de responsabilidad
 
 **Decisão**: Implementamos ambos os modos com fallback automático, priorizando a disponibilidade do serviço.
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 

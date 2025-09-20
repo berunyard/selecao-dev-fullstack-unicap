@@ -52,6 +52,54 @@ npm run dev
 ```
 
 ---
+## Exemplos de Requisição  
+
+### Via cURL  
+**Requisição:**  
+```bash
+curl -X POST "http://localhost:8000/api/v1/analisar"   -H "Content-Type: application/json"   -d '{
+    "tarefa": "sentimento",
+    "texto_entrada": "Adorei este produto! Funciona perfeitamente.",
+    "usar_externo": false,
+    "opcoes": {"idioma": "pt"}
+  }'
+```  
+
+**Resposta:**  
+```json
+{
+  "id": "123e4567-e89b-12d3-a456-426614174000",
+  "tarefa": "sentimento",
+  "motor": "local:pysentimento/roberta-base-pt",
+  "resultado": {
+    "rotulo": "POSITIVO",
+    "pontuacao": 0.9567
+  },
+  "tempo_ms": 120,
+  "recebido_em": "2024-01-15T12:34:56Z"
+}
+```  
+
+### Via HTTPie  
+```bash
+http POST http://localhost:8000/api/v1/analisar   tarefa="sentimento"   texto_entrada="Que serviço péssimo, nunca mais compro aqui."   usar_externo:=false   opcoes:='{"idioma": "pt"}'
+```  
+
+### Via Postman  
+- **Método**: POST  
+- **URL**: `http://localhost:8000/api/v1/analisar`  
+- **Headers**: `Content-Type: application/json`  
+- **Body (raw JSON):**  
+```json
+{
+  "tarefa": "sentimento",
+  "texto_entrada": "O produto é razoável, mas poderia ser melhor.",
+  "usar_externo": true,
+  "opcoes": {"idioma": "pt"}
+}
+```  
+
+---
 
 ## Endpoints da API  
 

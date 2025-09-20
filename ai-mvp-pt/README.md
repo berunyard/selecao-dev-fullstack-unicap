@@ -2,7 +2,7 @@
 
 Este é um MVP (Minimum Viable Product) para análise de sentimentos em textos em português, utilizando FastAPI no backend e React no frontend.
 
-## 📋 Visão Geral
+## Visão Geral
 
 ### Arquitetura
 
@@ -28,15 +28,67 @@ O sistema segue uma arquitetura moderna com separação clara de responsabilidad
 
 **Decisão**: Implementamos ambos os modos com fallback automático, priorizando a disponibilidade do serviço.
 
-## 🚀 Como Executar
+## Como Executar  
 
-### Pré-requisitos
+### Pré-requisitos  
+- Python 3.10+  
+- Node.js 16+  
 
-- Python 3.10+
-- Node.js 16+
-- pip (gerenciador de pacotes Python)
-- npm (gerenciador de pacotes Node)
+### Backend  
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate   # Windows
+pip install -r requirements.txt
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
 
-### Backend
+### Frontend  
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-1. Navegue até a pasta do backend:
+---
+
+## Endpoints da API  
+
+### Analisar texto  
+```bash
+curl -X POST "http://localhost:8000/api/v1/analisar"   -H "Content-Type: application/json"   -d '{
+    "tarefa": "sentimento",
+    "texto_entrada": "Adorei este produto!",
+    "usar_externo": false,
+    "opcoes": {"idioma": "pt"}
+  }'
+```
+
+### Health check  
+```bash
+curl http://localhost:8000/api/v1/healthz
+```
+
+---
+
+## Tecnologias  
+- **Backend:** FastAPI, Pydantic, Transformers, Hugging Face  
+- **Frontend:** React, Vite, Axios  
+- **IA:** Modelos especializados em português com fallback  
+
+---
+
+## Exemplos  
+| Texto                 | Sentimento | Confiança |
+|------------------------|------------|-----------|
+| "Adorei este produto!" | POSITIVO   | 95.6%     |
+| "Que serviço péssimo"  | NEGATIVO   | 92.3%     |
+| "Chegou no prazo"      | NEUTRO     | 78.9%     |
+
+---
+
+## URLs  
+- Frontend: [http://localhost:3000](http://localhost:3000)  
+- Backend: [http://localhost:8000](http://localhost:8000)  
+- Docs API: [http://localhost:8000/api/docs](http://localhost:8000/api/docs)  
